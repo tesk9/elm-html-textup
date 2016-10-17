@@ -1,4 +1,4 @@
-module Main exposing (..)
+module Main exposing (Config, TextUpString, toHtml)
 
 import Css
 import Html
