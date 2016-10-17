@@ -9,14 +9,6 @@ type alias Config a =
     { a | plain : Css.Mixin }
 
 
-defaultConfig : Config { attn1 : Css.Mixin, attn2 : Css.Mixin }
-defaultConfig =
-    { plain = Css.fontFamily Css.cursive
-    , attn1 = Css.mixin [ Css.fontFamily Css.fantasy, Css.textTransform Css.uppercase, Css.color (Css.hex "fff987") ]
-    , attn2 = Css.mixin [ Css.fontFamily Css.monospace, Css.textDecoration Css.overline ]
-    }
-
-
 type alias TextUpString a =
     ( String, Config a -> Css.Mixin )
 
@@ -37,6 +29,18 @@ view config ( value, styleAccessor ) =
 toStyle : Css.Mixin -> Html.Attribute msg
 toStyle mixin =
     (Html.Attributes.style << Css.asPairs) [ mixin ]
+
+
+
+{- *** EXAMPLE STUFF *** -}
+
+
+defaultConfig : Config { attn1 : Css.Mixin, attn2 : Css.Mixin }
+defaultConfig =
+    { plain = Css.fontFamily Css.cursive
+    , attn1 = Css.mixin [ Css.fontFamily Css.fantasy, Css.textTransform Css.uppercase, Css.color (Css.hex "fff987") ]
+    , attn2 = Css.mixin [ Css.fontFamily Css.monospace, Css.textDecoration Css.overline ]
+    }
 
 
 main : Html.Html msg
