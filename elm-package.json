@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "String to formatted Html library",
-    "repository": "https://github.com/user/project.git",
+    "repository": "https://github.com/tesk9/elm-html-textup.git",
     "license": "BSD3",
     "source-directories": [
         "src"
