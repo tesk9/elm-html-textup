@@ -5,32 +5,29 @@ import Html
 import Html.Attributes
 
 
-type alias Config =
-    { plain : Css.Mixin
-    , attn1 : Css.Mixin
-    , attn2 : Css.Mixin
-    }
+type alias Config a =
+    { a | plain : Css.Mixin }
 
 
-defaultConfig : Config
+defaultConfig : Config { attn1 : Css.Mixin, attn2 : Css.Mixin }
 defaultConfig =
     { plain = Css.fontFamily Css.cursive
-    , attn1 = Css.mixin [ Css.fontFamily Css.fantasy, Css.textTransform Css.uppercase ]
+    , attn1 = Css.mixin [ Css.fontFamily Css.fantasy, Css.textTransform Css.uppercase, Css.color (Css.hex "fff987") ]
     , attn2 = Css.mixin [ Css.fontFamily Css.monospace, Css.textDecoration Css.overline ]
     }
 
 
-type alias TextUpString =
-    ( String, Config -> Css.Mixin )
+type alias TextUpString a =
+    ( String, Config a -> Css.Mixin )
 
 
-toHtml : Config -> List TextUpString -> Html.Html msg
+toHtml : Config a -> List (TextUpString a) -> Html.Html msg
 toHtml config textUpStrings =
     List.map (view config) textUpStrings
         |> Html.span []
 
 
-view : Config -> TextUpString -> Html.Html msg
+view : Config a -> TextUpString a -> Html.Html msg
 view config ( value, styleAccessor ) =
     Html.span
         [ toStyle (styleAccessor config) ]
