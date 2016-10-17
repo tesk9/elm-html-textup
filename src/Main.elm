@@ -1,18 +1,18 @@
 module Main exposing (Config, TextUpString, toHtml)
 
+{-| A library for going from strings to fancily-formatted Html.
+
+@docs Config, TextUpString, toHtml
+
+-}
+
 import Css
 import Html
 import Html.Attributes
 
 
-{- A library for going from strings to fancily-formatted Html.
-
-   @docs Config, TextUpString, toHtml
--}
-
-
 {-| `Config` is for defining whatever style rules you want. The only
-    requirement is that there must be default `plain` style.
+    requirement is that there must be a default `plain` style.
 
 ```
 config : Config { attn1 : Css.Mixin, attn2 : Css.Mixin }
