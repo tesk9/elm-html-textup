@@ -1,4 +1,4 @@
-module Main exposing (Config, TextUpString, toHtml)
+module TextUp exposing (Config, TextUpString, toHtml)
 
 {-| A library for going from strings to fancily-formatted Html.
 
